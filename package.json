@@ -9,6 +9,9 @@
     "start": "node ./dist/app.js",
     "dev": "tsnd --exit-child ./src/app.ts"
   },
+  "prisma": {
+    "schema": "./src/database/prisma/schema.prisma"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Pedro0505/Project-Tasks-BackEnd.git"
