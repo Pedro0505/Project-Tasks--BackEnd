@@ -17,6 +17,6 @@ model Tasks {
 
 enum TasksStatus {
   PEDDING
-  INPROGRESS
+  IN_PROGRESS
   DONE
 }
