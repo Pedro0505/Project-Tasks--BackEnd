@@ -6,8 +6,8 @@
   "scripts": {
     "test": "jest",
     "prestart": "tsc",
-    "start": "node ./dist/app.js",
-    "dev": "tsnd --exit-child ./src/app.ts"
+    "start": "node ./dist/api/server.js",
+    "dev": "tsnd --exit-child ./src/api/server.ts"
   },
   "prisma": {
     "schema": "./src/database/prisma/schema.prisma"
@@ -25,6 +25,7 @@
   "homepage": "https://github.com/Pedro0505/Project-Tasks-BackEnd#readme",
   "devDependencies": {
     "@tsconfig/node16": "^1.0.2",
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/jest": "^27.5.1",
     "@types/node": "^17.0.34",
