@@ -23,6 +23,8 @@
       "consistent-return": "off",
       "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
       "implicit-arrow-linebreak": "off",
-      "function-paren-newline": "off"
+      "function-paren-newline": "off",
+      "no-underscore-dangle": ["error", { "allowAfterThis": true }],
+      "lines-between-class-members": "off"
     }
 }
