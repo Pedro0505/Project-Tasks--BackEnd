@@ -3,7 +3,6 @@ import TasksController from './controller';
 
 class TasksRoutes {
   private _controller: TasksController;
-
   private _route: Router;
 
   constructor(router: Router, controller: TasksController) {
