@@ -1,6 +1,5 @@
 import { ITaskCreateParams } from './ICreateTask';
-
-export type tasksStatus = 'PEDDING' | 'IN_PROGRESS' | 'DONE';
+import tasksStatus from './taskStatus';
 
 export interface ITasks {
   id: string;

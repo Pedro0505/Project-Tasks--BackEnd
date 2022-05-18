@@ -1,4 +1,4 @@
-type tasksStatus = 'PEDDING' | 'IN_PROGRESS' | 'DONE';
+import tasksStatus from "./taskStatus";
 
 export interface ITaskCreateParams {
   content: string;
