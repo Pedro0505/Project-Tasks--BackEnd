@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "pretest:integration": "DB_NAME=task-manager-test npx prisma migrate reset --force --skip-seed",
+    "test:integration": "jest --runInBand ./__tests__/integration",
     "prestart": "tsc",
     "start": "node ./dist/api/server.js",
     "dev": "tsnd --exit-child ./src/api/server.ts"
   },
   "prisma": {
-    "schema": "./src/database/prisma/schema.prisma"
+    "schema": "./src/database/prisma/schema.prisma",
+    "seed": "ts-node src/database/seeders/seed.ts"
   },
   "repository": {
     "type": "git",
@@ -37,6 +39,7 @@
     "jest": "^28.1.0",
     "prisma": "^3.14.0",
     "ts-jest": "^28.0.2",
+    "ts-node": "^10.7.0",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.6.4"
   },
