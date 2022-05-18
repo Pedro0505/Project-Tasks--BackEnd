@@ -1,2 +1,3 @@
 jest.config.ts
 src/**/interfaces/
+__tests__
