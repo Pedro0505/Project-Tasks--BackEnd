@@ -11,14 +11,4 @@ export const tasks: ITasks[] = [
     content: 'Fazer projeto TFC',
     tasksStatus: 'DONE',
   },
-  {
-    id: '9812ff40-6053-49e3-b604-0bcd74648dd9',
-    content: 'Fazer projeto Zoo Functions',
-    tasksStatus: 'PEDDING',
-  },
-  {
-    id: 'a7f00f69-161f-431b-bb31-32349bf6b967',
-    content: 'Fazer projeto Shopping Cart',
-    tasksStatus: 'PEDDING',
-  },
 ];
