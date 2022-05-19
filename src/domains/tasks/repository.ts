@@ -11,7 +11,9 @@ class TasksRepository implements ITaskRepository {
   }
 
   public async getAll() {
-    return await this._prisma.tasks.findMany();
+    const getAll = await this._prisma.tasks.findMany({ orderBy: { createdAt: 'asc' } });
+
+    return getAll;
   }
 
   public async create({ content, status }: ITaskCreateParams) {
@@ -25,7 +27,7 @@ class TasksRepository implements ITaskRepository {
   }
 
   public async deleteTask(id: string) {
-    this._prisma.tasks.delete({ where: { id } });
+    await this._prisma.tasks.delete({ where: { id } });
   }
 
   public async updateStatus({ status, id }: IUpdateStatus) {
@@ -47,7 +49,9 @@ class TasksRepository implements ITaskRepository {
   }
 
   public async getTaskById(id: string) {
-    return await this._prisma.tasks.findUnique({ where: { id } });
+    const task = await this._prisma.tasks.findUnique({ where: { id } });
+
+    return task;
   }
 }
 
