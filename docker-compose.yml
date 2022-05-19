@@ -21,7 +21,8 @@ services:
     ports:
       - 3001:3001
     environment:
-      - DATABASE_URL=mysql://root:12345678@task-manager-db:3306/task-manager-test?schema=public
+      - NODE_ENV=test
+      - DATABASE_URL_TEST=mysql://root:12345678@task-manager-db:3306/task-manager-test?schema=public
     healthcheck:
       test: ['CMD', 'lsof', '-t', '-i:3001']
       timeout: 10s
