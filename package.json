@@ -8,7 +8,9 @@
     "test:integration": "NODE_ENV=test jest --runInBand ./__tests__/integration",
     "prestart": "tsc",
     "start": "node ./dist/api/server.js",
-    "dev": "tsnd --exit-child ./src/api/server.ts"
+    "predev": "prisma generate",
+    "dev": "tsnd --exit-child ./src/api/server.ts",
+    "reset": "npx prisma migrate reset --force"
   },
   "prisma": {
     "schema": "./src/database/prisma/schema.prisma",
