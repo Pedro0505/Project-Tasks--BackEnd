@@ -22,6 +22,15 @@ class TasksController implements ITaskController {
 
     return res.status(code).json({ data });
   };
+
+  public updateContent = async (req: Request, res: Response) => {
+    const { content } = req.body;
+    const { id } = req.params;
+
+    const { reponse: { code, data } } = await this._service.updateContent({ content, id });
+
+    return res.status(code).json({ data });
+  };
 }
 
 export default TasksController;
