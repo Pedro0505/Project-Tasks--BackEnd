@@ -10,7 +10,8 @@
     "start": "node ./dist/api/server.js",
     "predev": "prisma generate",
     "dev": "tsnd --exit-child ./src/api/server.ts",
-    "reset": "npx prisma migrate reset --force"
+    "reset": "npx prisma migrate reset --force",
+    "lint": "npx eslint . --ext .ts"
   },
   "prisma": {
     "schema": "./src/database/prisma/schema.prisma",
