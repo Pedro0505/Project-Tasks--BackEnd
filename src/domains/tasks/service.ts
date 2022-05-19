@@ -2,6 +2,7 @@ import { NotFound, Ok } from '../http-responses';
 import { Create } from '../http-responses/Create';
 import { ITaskCreateParams } from './interfaces/ICreateTask';
 import { ITaskService } from './interfaces/ITaskService';
+import { IUpdateContent } from './interfaces/IUpdateTask';
 import TasksRepository from './repository';
 
 class TasksService implements ITaskService {
@@ -29,6 +30,16 @@ class TasksService implements ITaskService {
     if (!findTask) return new NotFound('Task Not Found');
 
     await this._repository.deleteTask(id);
+  }
+
+  public async updateContent({ content, id }: IUpdateContent) {
+    const findTask = this._repository.getTaskById(id);
+
+    if (!findTask) return new NotFound('Task Not Found');
+
+    const updated = await this._repository.updateContent({ content, id });
+
+    return new Ok(updated);
   }
 }
 
