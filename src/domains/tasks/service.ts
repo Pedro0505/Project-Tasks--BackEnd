@@ -25,7 +25,7 @@ class TasksService implements ITaskService {
   }
 
   public async deleteTask(id: string) {
-    const findTask = this._repository.getTaskById(id);
+    const findTask = await this._repository.getTaskById(id);
 
     if (!findTask) return new NotFound('Task Not Found');
 
