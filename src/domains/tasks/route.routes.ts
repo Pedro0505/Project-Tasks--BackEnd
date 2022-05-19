@@ -8,6 +8,12 @@ class TasksRoutes {
   constructor(router: Router, controller: TasksController) {
     this._controller = controller;
     this._route = router;
+
+    this._route.get('/', this._controller.getAll);
+  }
+
+  public get routes() {
+    return this._route;
   }
 }
 

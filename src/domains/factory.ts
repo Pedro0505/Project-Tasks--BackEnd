@@ -12,6 +12,6 @@ export default class Factory {
     const controller = new TasksController(service);
     const router = new TasksRoutes(Router(), controller);
 
-    return router;
+    return router.routes;
   }
 }
