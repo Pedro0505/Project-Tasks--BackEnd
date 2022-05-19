@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { ResponseError } from '../http-responses/class';
 import { ITaskController } from './interfaces/ITaskController';
 import TasksService from './service';
 
@@ -39,6 +40,20 @@ class TasksController implements ITaskController {
     const { reponse: { code, data } } = await this._service.updateStatus({ id, status });
 
     return res.status(code).json({ data });
+  };
+
+  public deleteTask = async (req: Request, res: Response) => {
+    const { id } = req.params;
+
+    const reponse = await this._service.deleteTask(id);
+
+    if (reponse instanceof ResponseError) {
+      const { reponse: { code, data } } = reponse;
+
+      return res.status(code).json({ data });
+    }
+
+    return res.status(204).end();
   };
 }
 
