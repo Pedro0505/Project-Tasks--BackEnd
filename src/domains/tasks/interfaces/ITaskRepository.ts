@@ -1,4 +1,5 @@
-import { ITaskCreateParams } from './ICreateTask';
+import { ICreateTask, ITaskCreateParams } from './ICreateTask';
+import { IUpdateContent, IUpdateStatus } from './IUpdateTask';
 import tasksStatus from './taskStatus';
 
 export interface ITasks {
@@ -11,19 +12,6 @@ export interface ITasks {
 
 export interface ITaskId {
   id: string;
-}
-
-export interface ICreateTask extends ITaskId {
-  content: string;
-  status: tasksStatus
-}
-
-export interface IUpdateContent extends ITaskId {
-  content: string;
-}
-
-export interface IUpdateStatus extends ITaskId {
-  status: tasksStatus;
 }
 
 export interface ITaskRepository {
