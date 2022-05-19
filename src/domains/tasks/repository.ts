@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import { ITaskCreateParams } from './interfaces/ICreateTask';
-import { ITaskRepository, IUpdateContent, IUpdateStatus } from './interfaces/ITaskRepository';
+import { ITaskRepository } from './interfaces/ITaskRepository';
+import { IUpdateContent, IUpdateStatus } from './interfaces/IUpdateTask';
 
 class TasksRepository implements ITaskRepository {
   private _prisma: PrismaClient;
