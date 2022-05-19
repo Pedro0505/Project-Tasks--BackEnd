@@ -34,4 +34,26 @@ describe('Testando a rota /tasks', () => {
       expect(body.data).toStrictEqual(mock.tasks);
     });
   });
+
+  describe('Testando o DELETE /tasks/:id', () => {
+    beforeAll(async () => {
+      await prisma.tasks.createMany({ data: tasks });
+    });
+
+    afterAll(async () => {
+      await prisma.tasks.deleteMany();
+
+      await prisma.$disconnect();
+    });
+
+    it('Testando o delete task', async () => {
+      const { status: firstStatus } = await request(app).delete('/tasks/0f7446c3-43a1-4e49-b3ce-443bc3b81d2f');
+
+      const { status: secondStatus, body } = await request(app).delete('/tasks/0f7446c3-43a1-4e49-b3ce-443bc3b81d2f');
+
+      expect(firstStatus).toBe(204);
+      expect(secondStatus).toBe(404);
+      expect(body).toStrictEqual({ data: { message: { error: 'Task Not Found' } } });
+    });
+  });
 });
