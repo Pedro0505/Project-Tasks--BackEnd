@@ -33,7 +33,7 @@ class TasksService implements ITaskService {
   }
 
   public async updateContent({ content, id }: IUpdateContent) {
-    const findTask = this._repository.getTaskById(id);
+    const findTask = await this._repository.getTaskById(id);
 
     if (!findTask) return new NotFound('Task Not Found');
 
@@ -43,7 +43,7 @@ class TasksService implements ITaskService {
   }
 
   public async updateStatus({ status, id }: IUpdateStatus) {
-    const findTask = this._repository.getTaskById(id);
+    const findTask = await this._repository.getTaskById(id);
 
     if (!findTask) return new NotFound('Task Not Found');
 

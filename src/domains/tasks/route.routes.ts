@@ -24,6 +24,7 @@ class TasksRoutes {
 
     this._route.patch(
       '/content/:id',
+      this._middleware.updateContentValidate,
       this._controller.updateContent,
     );
 

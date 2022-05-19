@@ -1,5 +1,5 @@
 import joi from 'joi';
-import { ITaskCreateParams } from '../interfaces/ICreateTask';
+import { ITaskCreateParams } from './interfaces/ICreateTask';
 
 export default class TaskSchema {
   private joi: joi.Root;

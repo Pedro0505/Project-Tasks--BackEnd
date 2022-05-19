@@ -5,7 +5,7 @@ import TasksController from './tasks/controller';
 import TasksMiddleware from './tasks/middleware';
 import TasksRepository from './tasks/repository';
 import TasksRoutes from './tasks/route.routes';
-import TaskSchema from './tasks/schemas/TaskSchema';
+import TaskSchema from './tasks/taskSchema';
 import TasksService from './tasks/service';
 
 export default class Factory {
