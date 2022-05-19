@@ -17,3 +17,20 @@ jobs:
 
       - name: Executando o lint para verificar se há erros
         run: npx eslint . --ext .ts
+
+  tests:
+    runs-on: ubuntu-20.04
+    needs: [eslint]
+    steps:
+      - name: Verifica o repositório do Git
+        uses: actions/checkout@v2
+
+      - name: Sobe os containers
+        run: docker-compose up --build -d
+
+      - name: Roda os testes de integração
+        run: docker-compose exec -T task-manager-backend npm run test:integration
+
+      - name: Derruba os containers
+        if: always()
+        run: docker-compose down --rmi all --volumes --remove-orphans
