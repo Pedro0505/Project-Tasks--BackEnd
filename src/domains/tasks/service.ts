@@ -1,4 +1,4 @@
-import { Ok } from '../http-responses';
+import { NotFound, Ok } from '../http-responses';
 import { Create } from '../http-responses/Create';
 import { ITaskCreateParams } from './interfaces/ICreateTask';
 import { ITaskService } from './interfaces/ITaskService';
@@ -21,6 +21,14 @@ class TasksService implements ITaskService {
     const created = await this._repository.create({ content, status });
 
     return new Create(created);
+  }
+
+  public async deleteTask(id: string) {
+    const findTask = this._repository.getTaskById(id);
+
+    if (!findTask) return new NotFound('Task Not Found');
+
+    await this._repository.deleteTask(id);
   }
 }
 
