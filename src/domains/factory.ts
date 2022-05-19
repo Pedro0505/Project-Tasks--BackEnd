@@ -1,8 +1,11 @@
 import { PrismaClient } from '@prisma/client';
 import { Router } from 'express';
+import joi from 'joi';
 import TasksController from './tasks/controller';
+import TasksMiddleware from './tasks/middleware';
 import TasksRepository from './tasks/repository';
 import TasksRoutes from './tasks/route.routes';
+import TaskSchema from './tasks/schemas/TaskSchema';
 import TasksService from './tasks/service';
 
 export default class Factory {
@@ -10,7 +13,9 @@ export default class Factory {
     const repository = new TasksRepository(new PrismaClient());
     const service = new TasksService(repository);
     const controller = new TasksController(service);
-    const router = new TasksRoutes(Router(), controller);
+    const schema = new TaskSchema(joi);
+    const middleware = new TasksMiddleware(schema);
+    const router = new TasksRoutes(Router(), controller, middleware);
 
     return router.routes;
   }
