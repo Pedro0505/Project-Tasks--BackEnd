@@ -55,5 +55,12 @@ describe('Testando a rota /tasks', () => {
       expect(secondStatus).toBe(404);
       expect(body).toStrictEqual({ data: { message: { error: 'Task Not Found' } } });
     });
+
+    it('Testando o delete task quando o id não é encontrado', async () => {
+      const { status, body } = await request(app).delete('/tasks/notFoundID');
+
+      expect(status).toBe(404);
+      expect(body).toStrictEqual({ data: { message: { error: 'Task Not Found' } } });
+    });
   });
 });

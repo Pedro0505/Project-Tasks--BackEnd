@@ -25,3 +25,14 @@ export const tasks = [
     tasksStatus: 'DONE'
   }
 ]
+
+export const updatedContent = {
+  request: { content: "Refazendo o ultimo requisito" },
+  requestErroEmptyStr: { content: "" },
+  requestErroMin: { content: "a" },
+  requestErroNotStr: { content: 1 },
+  response: {
+    id: '0f7446c3-43a1-4e49-b3ce-443bc3b81d2f',
+    content: 'Refazendo o ultimo requisito'
+  },
+}
