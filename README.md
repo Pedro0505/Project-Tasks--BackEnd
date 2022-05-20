@@ -140,6 +140,15 @@ Exemplo de requisição
 }
 ```
 
+### O que pode ser enviado
+
+<br />
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `content` | `string` | **Obrigatório**. O conteúdo da sua task |
+| `tasksStatus` | `string` | **Opicional**. O status da sua task (Se não for mandado vai assumir o valor de PENDING) |
+
 <br />
 
 Exemplo de retorno
@@ -178,6 +187,14 @@ Exemplo de retorno
   No Body Response
 ```
 
+### O que pode ser enviado
+
+<br />
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `/:id` | `param` | **Obrigatório**. Vai ser o id da sua task que deverar ser excluida, passando ela pelo parâmetro da rota |
+
 <br />
 
 ### Atualizando o conteúdo de uma tasks
@@ -193,6 +210,16 @@ Exemplo de requisição
 	"content": "Tarefa atualizada"
 }
 ```
+
+### O que pode ser enviado
+
+<br />
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `/:id` | `param` | **Obrigatório**. Vai ser o id da sua task que deverar ser alterado, passando ela pelo parâmetro da rota |
+| `content` | `string` | **Obrigatório**. O conteúdo da sua task |
+
 
 <br />
 
@@ -230,6 +257,15 @@ Exemplo de requisição
 	"status": "DONE"
 }
 ```
+
+### O que pode ser enviado
+
+<br />
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `/:id` | `param` | **Obrigatório**. Vai ser o id da sua task que deverar ser alterado, passando ela pelo parâmetro da rota |
+| `tasksStatus` | `string` | **Opicional**. O status da sua task (Se não for mandado vai assumir o valor de PENDING) |
 
 <br />
 
