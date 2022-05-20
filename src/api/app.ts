@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import Factory from '../domains/factory';
+import 'express-async-errors';
+import errorHandler from '../domains/middleware/errorHandler';
 
 class App {
   public app: express.Express;
@@ -13,6 +15,7 @@ class App {
 
   private middlewares() {
     this.app.use(express.json());
+    this.app.use(errorHandler);
     this.app.use(cors({ origin: '*', methods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS', 'PATCH'] }));
   }
 
