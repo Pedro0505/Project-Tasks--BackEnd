@@ -109,13 +109,11 @@ describe('Testando a rota /tasks', () => {
         .patch('/tasks/content/0f7446c3-43a1-4e49-b3ce-443bc3b81d2f')
         .send(mock.updatedContent.requestErroMax);
 
-        console.log(mock.updatedContent.requestErroMax)
-        
         expect(status).toBe(400);
         expect(body).toStrictEqual(mock.updatedContent.responseErroMax);
       });
 
-      it('Testando o updatedContent das tasks quando o content não é um numero', async () => {
+      it('Testando o updatedContent das tasks quando o content é um numero', async () => {
         const { body, status } = await request(app)
         .patch('/tasks/content/0f7446c3-43a1-4e49-b3ce-443bc3b81d2f')
         .send(mock.updatedContent.requestErroNotStr);
@@ -131,6 +129,82 @@ describe('Testando a rota /tasks', () => {
         
         expect(status).toBe(404);
         expect(body).toStrictEqual(mock.updatedContent.responseErrorNotFound);
+      });
+
+      it('Testando o updatedContent onde o content não é passado', async () => {
+        const { body, status } = await request(app)
+        .patch('/tasks/status/0f7446c3-43a1-4e49-b3ce-443bc3b81d2f')
+        
+        expect(status).toBe(400);
+        expect(body).toStrictEqual(mock.updatedContent.responseErroNoField);
+      });
+    })
+  });
+
+  describe('Testando o PATCH /tasks/status/:id', () => {
+    beforeAll(async () => {
+      await prisma.tasks.createMany({ data: tasks });
+    });
+
+    afterAll(async () => {
+      await prisma.tasks.deleteMany();
+
+      await prisma.$disconnect();
+    });
+
+    it('Testando o updatedStatus das tasks quando dá tudo certo', async () => {
+      const { body, status } = await request(app)
+      .patch('/tasks/status/0f7446c3-43a1-4e49-b3ce-443bc3b81d2f')
+      .send(mock.updatedStatus.request);
+
+      expect(status).toBe(200);
+      expect(body.data).toBeDefined();
+      expect(body.data).toStrictEqual(mock.updatedStatus.response);
+    });
+
+    describe('Testando caso de erros do updatedContent', () => {
+      it('Testando o updatedStatus vem diferente de IN_PROGRESS | DONE | PEDDING', async () => {
+        const { body, status } = await request(app)
+        .patch('/tasks/status/0f7446c3-43a1-4e49-b3ce-443bc3b81d2f')
+        .send(mock.updatedStatus.requestErrorStatus);
+        
+        expect(status).toBe(400);
+        expect(body).toStrictEqual(mock.updatedStatus.responseErrorStatus);
+      });
+
+      it('Testando o updatedContent das tasks quando não tem o id encontrado', async () => {
+        const { body, status } = await request(app)
+        .patch('/tasks/status/notHaveId')
+        .send(mock.updatedStatus.request);
+
+        expect(status).toBe(404);
+        expect(body.data).toStrictEqual(mock.updatedStatus.responseErrorNotFound);
+      });
+
+      it('Testando o updatedStatus onde o status é um numero', async () => {
+        const { body, status } = await request(app)
+        .patch('/tasks/status/0f7446c3-43a1-4e49-b3ce-443bc3b81d2f')
+        .send(mock.updatedStatus.requestErroNotStr);
+        
+        expect(status).toBe(400);
+        expect(body).toStrictEqual(mock.updatedStatus.responseErroNotStr);
+      });
+
+      it('Testando o updatedStatus onde o status é vazio', async () => {
+        const { body, status } = await request(app)
+        .patch('/tasks/status/0f7446c3-43a1-4e49-b3ce-443bc3b81d2f')
+        .send(mock.updatedStatus.requestErroEmptyStr);
+        
+        expect(status).toBe(400);
+        expect(body).toStrictEqual(mock.updatedStatus.responseErroEmptyStr);
+      });
+
+      it('Testando o updatedStatus onde o status não é passado', async () => {
+        const { body, status } = await request(app)
+        .patch('/tasks/status/0f7446c3-43a1-4e49-b3ce-443bc3b81d2f')
+        
+        expect(status).toBe(400);
+        expect(body).toStrictEqual(mock.updatedStatus.responseErroNoField);
       });
     })
   });
