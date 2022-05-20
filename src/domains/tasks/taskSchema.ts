@@ -33,4 +33,14 @@ export default class TaskSchema {
         }),
     });
   }
+
+  public updateStatus() {
+    return this.joi.object({
+      status: this.joi.string().required().messages({
+        'any.required': '400|All fields must be filled',
+        'string.empty': '400|"Status" fild not be empty',
+        'string.base': '400|"Status" must be a string',
+      }),
+    });
+  }
 }

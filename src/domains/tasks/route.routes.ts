@@ -30,6 +30,7 @@ class TasksRoutes {
 
     this._route.patch(
       '/status/:id',
+      this._middleware.updateStatusValidate,
       this._controller.updateStatus,
     );
 
