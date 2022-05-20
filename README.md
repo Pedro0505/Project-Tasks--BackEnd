@@ -83,7 +83,7 @@ Acesse a aplicação usando o seguinte endereço
 
 ### Retornar todas as tasks
 
-```http
+```plaintext
   GET /tasks
 ```
 
@@ -127,7 +127,7 @@ Exemplo de retorno
 
 ### Criar uma nova tasks
 
-```http
+```plaintext
   POST /tasks
 ```
 
@@ -177,7 +177,7 @@ Exemplo de retorno
 
 ### Deletando uma tasks
 
-```http
+```plaintext
   DELETE /tasks/:id
 ```
 
@@ -199,7 +199,7 @@ Exemplo de retorno
 
 ### Atualizando o conteúdo de uma tasks
 
-```http
+```plaintext
   PUT /tasks/content/:id
 ```
 
@@ -246,7 +246,7 @@ Exemplo de retorno
 
 ### Atualizando o status de uma tasks
 
-```http
+```plaintext
   PUT /tasks/status/:id
 ```
 
