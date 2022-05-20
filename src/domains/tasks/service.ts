@@ -18,7 +18,7 @@ class TasksService implements ITaskService {
     return new Ok(allTasks);
   }
 
-  public async create({ content, status }: ITaskCreateParams) {
+  public async create({ content, status = 'PEDDING' }: ITaskCreateParams) {
     const created = await this._repository.create({ content, status });
 
     return new Create(created);

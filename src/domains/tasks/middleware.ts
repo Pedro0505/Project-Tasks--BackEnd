@@ -24,8 +24,10 @@ export default class TasksMiddleware {
 
     const regexStatus = /IN_PROGRESS|DONE|PEDDING/g;
 
-    if (!regexStatus.test(status)) {
-      return res.status(400).json({ message: 'Status must be exactly IN_PROGRESS | DONE | PEDDING' });
+    if (status) {
+      if (!regexStatus.test(status)) {
+        return res.status(400).json({ message: 'Status must be exactly IN_PROGRESS | DONE | PEDDING' });
+      }
     }
 
     next();
