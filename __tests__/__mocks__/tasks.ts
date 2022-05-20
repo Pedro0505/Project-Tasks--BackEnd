@@ -53,3 +53,28 @@ export const updatedStatus = {
   requestErrorStatus: { status: 'FINISHED' },
   requestErroNotStr: { status: 1 },
 };
+
+export const createTask = {
+  request: { content: 'Terminar o projeto de ontem', status: 'IN_PROGRESS' },
+
+  requestErroEmptyStrStatus: { content: 'Terminar o projeto de ontem', status: "" },
+  requestErrorStatus: { content: 'Terminar o projeto de ontem', status: 'FINISHED' },
+  requestErroNotStrStatus: { content: 'Terminar o projeto de ontem', status: 1 },
+  requestErroEmptyStrContent: { content: "", status: 'IN_PROGRESS' },
+  requestErroMinContent: { content: "a", status: 'IN_PROGRESS' },
+  requestErroMaxContent: { content: "a".repeat(51), status: 'IN_PROGRESS' },
+  requestErroNotStrContent: { content: 1, status: 'IN_PROGRESS' },
+
+  response: { content: 'Terminar o projeto de ontem', status: 'IN_PROGRESS' },
+
+  responseErrorStatus: { message: 'Status must be exactly IN_PROGRESS | DONE | PEDDING' },
+  responseErroEmptyStrStatus: { message: '\"Status\" fild not be empty' },
+  responseErroNotStrStatus: {	message: '\"Status\" must be a string'  },
+
+  responseErroNoField: {	message: 'All fields must be filled' },
+
+  responseErroEmptyStrContent: { message: '\"Content\" fild not be empty' },
+  responseErroNotStrContent: {	message: '\"Content\" must be a string'  },
+  responseErroMinContent: { message: '\"content\" length must be at least 2 characters long' },
+  responseErroMaxContent: { message: '\"content\" length must be less than or equal to 50 characters long' },
+}

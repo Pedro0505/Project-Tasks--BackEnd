@@ -208,4 +208,101 @@ describe('Testando a rota /tasks', () => {
       });
     })
   });
+
+  describe('Testando o POST /tasks', () => {
+    beforeAll(async () => {
+      await prisma.tasks.createMany({ data: tasks });
+    });
+
+    afterAll(async () => {
+      await prisma.tasks.deleteMany();
+
+      await prisma.$disconnect();
+    });
+
+    it('Testando o create das tasks quando dá tudo certo', async () => {
+      const { body, status } = await request(app)
+      .post('/tasks')
+      .send(mock.createTask.request);
+
+      expect(status).toBe(201);
+      expect(body.data).toBeDefined();
+      expect(body.data.id).toBeDefined();
+      expect(body.data.content).toEqual(mock.createTask.response.content);
+      expect(body.data.status).toEqual(mock.createTask.response.status);
+    });
+
+    describe('Testando caso de erros do create', () => {
+      it('Testando o updatedStatus vem diferente de IN_PROGRESS | DONE | PEDDING', async () => {
+        const { body, status } = await request(app)
+        .post('/tasks')
+        .send(mock.createTask.requestErrorStatus);
+        
+        expect(status).toBe(400);
+        expect(body).toStrictEqual(mock.createTask.responseErrorStatus);
+      });
+
+      it('Testando o create onde o status é um numero', async () => {
+        const { body, status } = await request(app)
+        .post('/tasks')
+        .send(mock.createTask.requestErroNotStrStatus);
+        
+        expect(status).toBe(400);
+        expect(body).toStrictEqual(mock.createTask.responseErroNotStrStatus);
+      });
+
+      it('Testando o create onde o status é vazio', async () => {
+        const { body, status } = await request(app)
+        .post('/tasks')
+        .send(mock.createTask.requestErroEmptyStrStatus);
+        
+        expect(status).toBe(400);
+        expect(body).toStrictEqual(mock.createTask.responseErroEmptyStrStatus);
+      });
+
+      it('Testando o create onde o status não é passado', async () => {
+        const { body, status } = await request(app)
+        .post('/tasks')
+        
+        expect(status).toBe(400);
+        expect(body).toStrictEqual(mock.createTask.responseErroNoField);
+      });
+
+      it('Testando o create onde o content é um numero', async () => {
+        const { body, status } = await request(app)
+        .post('/tasks')
+        .send(mock.createTask.requestErroNotStrContent);
+        
+        expect(status).toBe(400);
+        expect(body).toStrictEqual(mock.createTask.responseErroNotStrContent);
+      });
+
+      it('Testando o create onde o content é vazio', async () => {
+        const { body, status } = await request(app)
+        .post('/tasks')
+        .send(mock.createTask.requestErroEmptyStrContent);
+        
+        expect(status).toBe(400);
+        expect(body).toStrictEqual(mock.createTask.responseErroEmptyStrContent);
+      });
+
+      it('Testando o create onde o content tem 1 caracter', async () => {
+        const { body, status } = await request(app)
+        .post('/tasks')
+        .send(mock.createTask.requestErroMinContent);
+        
+        expect(status).toBe(400);
+        expect(body).toStrictEqual(mock.createTask.responseErroMinContent);
+      });
+
+      it('Testando o create onde o content tem 50 caracteres', async () => {
+        const { body, status } = await request(app)
+        .post('/tasks')
+        .send(mock.createTask.requestErroMaxContent);
+        
+        expect(status).toBe(400);
+        expect(body).toStrictEqual(mock.createTask.responseErroMaxContent);
+      });
+    })
+  });
 });
