@@ -290,3 +290,22 @@ Exemplo de retorno
 | `tasksStatus` | `string` | O status da sua task |
 
 <br />
+
+## Stack utilizada
+
+- Node
+- Express
+- Joi
+- Jest
+- Prisma
+- Typescript
+- MySql
+
+<br />
+
+## Paradigmas
+
+- OOP
+- Rest Api
+- Solid
+- DDD
