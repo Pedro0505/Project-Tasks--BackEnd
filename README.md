@@ -135,8 +135,8 @@ Exemplo de requisição
 
 ```json
 {
-	"content": "Terminar o projeto de ontem",
-	"status": "PEDDING"
+   "content": "Terminar o projeto de ontem",
+   "status": "PEDDING"
 }
 ```
 
@@ -146,11 +146,11 @@ Exemplo de retorno
 
 ```json
 {
-	"data": {
-		"id": "3618a756-0149-4552-b216-c1a94cf1b084",
-		"content": "Terminar o projeto de ontem",
-		"status": "PEDDING"
-	}
+   "data": {
+      "id": "3618a756-0149-4552-b216-c1a94cf1b084",
+      "content": "Terminar o projeto de ontem",
+      "status": "PEDDING"
+   }
 }
 ```
 
@@ -190,7 +190,7 @@ Exemplo de requisição
 
 ```json
 {
-	"content": "Tarefa atualizada"
+   "content": "Tarefa atualizada"
 }
 ```
 
@@ -200,10 +200,10 @@ Exemplo de retorno
 
 ```json
 {
-	"data": {
-		"id": "0f7446c3-43a1-4e49-b3ce-443bc3b81d2f",
-		"content": "Tarefa atualizada"
-	}
+   "data": {
+      "id": "0f7446c3-43a1-4e49-b3ce-443bc3b81d2f",
+      "content": "Tarefa atualizada"
+   }
 }
 ```
 ### O que é retornado
@@ -227,7 +227,7 @@ Exemplo de requisição
 
 ```json
 {
-	"status": "DONE"
+   "status": "DONE"
 }
 ```
 
@@ -237,10 +237,10 @@ Exemplo de retorno
 
 ```json
 {
-	"data": {
-		"id": "0f7446c3-43a1-4e49-b3ce-443bc3b81d2f",
-		"status": "DONE"
-	}
+   "data": {
+      "id": "0f7446c3-43a1-4e49-b3ce-443bc3b81d2f",
+      "status": "DONE"
+   }
 }
 ```
 
