@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import Factory from '../domains/factory';
+import Factory from '../domains/Factory';
 import 'express-async-errors';
 import errorHandler from '../domains/middleware/errorHandler';
 
