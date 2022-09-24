@@ -18,6 +18,12 @@ Instale as dependências
   npm install
 ```
 
+Inicie o Prisma Client
+
+```bash
+  npx prisma migrate reset --force --schema src/database/prisma/schema.prisma
+```
+
 Inicie o servidor
 
 ```bash
