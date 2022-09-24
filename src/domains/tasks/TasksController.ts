@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { ResponseError } from '../http-responses/class';
 import { ITaskController } from './interfaces/ITaskController';
-import TasksService from './service';
+import TasksService from './TasksService';
 
 class TasksController implements ITaskController {
   private _service: TasksService;

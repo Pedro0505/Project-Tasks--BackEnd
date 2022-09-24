@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import TasksController from './controller';
-import TasksMiddleware from './middleware';
+import TasksController from './TasksController';
+import TasksMiddleware from './TasksMiddleware';
 
 class TasksRoutes {
   private _controller: TasksController;

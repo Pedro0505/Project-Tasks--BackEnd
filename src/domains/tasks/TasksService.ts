@@ -3,7 +3,7 @@ import { Create } from '../http-responses/Create';
 import { ITaskCreateParams } from './interfaces/ICreateTask';
 import { ITaskService } from './interfaces/ITaskService';
 import { IUpdateContent, IUpdateStatus } from './interfaces/IUpdateTask';
-import TasksRepository from './repository';
+import TasksRepository from './TasksRepository';
 
 class TasksService implements ITaskService {
   private _repository: TasksRepository;
